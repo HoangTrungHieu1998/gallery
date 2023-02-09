@@ -7,7 +7,8 @@ import 'package:gallery/views/home/home_screen.dart';
 
 import 'package:http/http.dart' as http;
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
