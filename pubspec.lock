@@ -64,7 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
-<<<<<<< HEAD
   cloud_firestore:
     dependency: "direct main"
     description:
@@ -86,8 +85,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.2"
-=======
->>>>>>> 04d32501206bc8560e647912dff8914c9bf6d834
   collection:
     dependency: transitive
     description:
@@ -159,11 +156,7 @@ packages:
     source: hosted
     version: "5.2.5"
   firebase_core:
-<<<<<<< HEAD
     dependency: "direct main"
-=======
-    dependency: transitive
->>>>>>> 04d32501206bc8560e647912dff8914c9bf6d834
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
@@ -209,16 +202,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-<<<<<<< HEAD
-=======
-  flutter_config:
-    dependency: "direct dev"
-    description:
-      name: flutter_config
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
->>>>>>> 04d32501206bc8560e647912dff8914c9bf6d834
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -411,6 +394,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.11.1"
+  pinch_zoom:
+    dependency: "direct main"
+    description:
+      name: pinch_zoom
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   platform:
     dependency: transitive
     description:

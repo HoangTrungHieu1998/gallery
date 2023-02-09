@@ -47,12 +47,9 @@ dependencies:
   path: ^1.8.2
   google_sign_in: ^5.4.4
   firebase_auth: ^4.2.6
-<<<<<<< HEAD
   cloud_firestore: ^4.3.2
   firebase_core: ^2.5.0
-=======
->>>>>>> 04d32501206bc8560e647912dff8914c9bf6d834
-
+  pinch_zoom: ^1.0.0
 
 
 dev_dependencies:
@@ -78,14 +75,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-<<<<<<< HEAD
   assets:
     - assets/
     - assets/images/
-=======
-  # assets:
-  #   - images/a_dot_burr.jpeg
->>>>>>> 04d32501206bc8560e647912dff8914c9bf6d834
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -6,6 +6,7 @@ import 'package:gallery/models/cache_image_model.dart';
 import 'package:gallery/models/photo.dart';
 import 'package:gallery/services/cache_service.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:pinch_zoom/pinch_zoom.dart';
 
 class DetailScreen extends StatefulWidget {
   final String imageUrl;
@@ -49,7 +50,9 @@ class _DetailScreenState extends State<DetailScreen> {
           height: double.infinity,
           child: Hero(
             tag: widget.imageID,
-            child: CachedNetworkImage(
+            child: PinchZoom(
+                maxScale: 2,
+                child: CachedNetworkImage(
               imageUrl: widget.imageUrl,
               imageBuilder: (context, imageProvider) => SizedBox(
                 width: double.infinity,
@@ -70,6 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 Icons.image_not_supported_rounded,
                 color: Colors.grey,
               ),
+            )
             ),
           ),
         ),
