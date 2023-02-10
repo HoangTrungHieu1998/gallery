@@ -17,6 +17,8 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  late TransformationController controller;
+  TapDownDetails? tapDownDetails;
   bool isBookmark = false;
 
   @override
@@ -24,6 +26,14 @@ class _DetailScreenState extends State<DetailScreen> {
     // TODO: implement initState
     super.initState();
     checkBookmark();
+    controller = TransformationController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,26 +59,46 @@ class _DetailScreenState extends State<DetailScreen> {
           height: double.infinity,
           child: Hero(
             tag: widget.imageID,
-            child: CachedNetworkImage(
-              imageUrl: widget.imageUrl,
-              imageBuilder: (context, imageProvider) => SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Image(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
+            child: GestureDetector(
+              onDoubleTapDown: (details) => tapDownDetails = details,
+              onDoubleTap: (){
+                final position = tapDownDetails!.localPosition;
+                const double scale = 3;
+                final x = -position.dx * (scale-1);
+                final y = -position.dy * (scale-1);
+                final zoom = Matrix4.identity()
+                  ..translate(x,y)
+                  ..scale(scale);
+                final value = controller.value.isIdentity() ? zoom : Matrix4.identity();
+                controller.value = value;
+              },
+              child: InteractiveViewer(
+                clipBehavior: Clip.none,
+                panEnabled: false,
+                scaleEnabled: false,
+                transformationController: controller,
+                child: CachedNetworkImage(
+                  imageUrl: widget.imageUrl,
+                  imageBuilder: (context, imageProvider) => SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  placeholder: (context, url) => Center(
+                    child: LoadingAnimationWidget.flickr(
+                      rightDotColor: Colors.black,
+                      leftDotColor: const Color(0xff0bb3c2),
+                      size: 35,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(
+                    Icons.image_not_supported_rounded,
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
-              placeholder: (context, url) => Center(
-                child: LoadingAnimationWidget.flickr(
-                  rightDotColor: Colors.black,
-                  leftDotColor: const Color(0xff0bb3c2),
-                  size: 35,
-                ),
-              ),
-              errorWidget: (context, url, error) => const Icon(
-                Icons.image_not_supported_rounded,
-                color: Colors.grey,
               ),
             ),
           ),
